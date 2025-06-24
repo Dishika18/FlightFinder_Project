@@ -1,8 +1,10 @@
 # FlightFinder – Find It. Book It. Board It. ✈
 
-![FlightFinder Preview](Project Files/images/og_img.png)
+![FlightFinder Preview](Project_Files/images/og_img.png)
 
-> FlightFinder is a real-time flight booking web application built to simplify air travel for users and administrators. It allows users to explore and book flights across major Indian and international cities, with features like seat selection, real-time status updates, and a smooth, responsive interface. Admins can manage flights, track bookings, and send live notifications making the system dynamic and easy to maintain.
+<br>
+
+FlightFinder is a real-time flight booking web application built to simplify air travel for users and administrators. It allows users to explore and book flights across major Indian and international cities, with features like seat selection, real-time status updates, and a smooth, responsive interface. Admins can manage flights, track bookings, and send live notifications making the system dynamic and easy to maintain.
 
 ## Features
 
@@ -19,8 +21,7 @@
 - **Frontend:** React.js, Tailwind CSS  
 - **Backend:** Supabase (PostgreSQL, Auth, Realtime)  
 - **Routing & State:** React Router DOM, React Hooks
-
-## Getting Started  
+ 
 ## Getting Started
 
 To run this project locally:
