@@ -50,7 +50,6 @@ const BookFlight = () => {
 
   const checkAuthAndLoadData = async () => {
     try {
-      // Check authentication
       const currentUser = await getCurrentUser()
       if (!currentUser) {
         navigate("/")
@@ -66,7 +65,6 @@ const BookFlight = () => {
       setUser(currentUser)
       setProfile(userProfile)
 
-      // Load flight data
       await loadFlightData()
     } catch (err) {
       setError("Failed to load page data")
@@ -77,7 +75,6 @@ const BookFlight = () => {
 
   const loadFlightData = async () => {
     try {
-      // Get flight details
       const { data: flightData, error: flightError } = await getFlightById(flightId)
       if (flightError) throw flightError
 
@@ -88,7 +85,6 @@ const BookFlight = () => {
 
       setFlight(flightData)
 
-      // Get booked seats with user information
       const { data: bookedSeatsData, error: seatsError } = await getBookedSeats(flightId)
       if (seatsError) throw seatsError
 
@@ -122,10 +118,8 @@ const BookFlight = () => {
 
       if (error) throw error
 
-      // Show success message
       setShowSuccess(true)
 
-      // Redirect to home after 4 seconds
       setTimeout(() => {
         navigate("/home")
       }, 4000)
@@ -143,7 +137,6 @@ const BookFlight = () => {
   const handleSignOut = async () => {
     showToast("You've been logged out", "info")
     await signOut()
-    // navigate("/")
     setTimeout(() => {
       navigate("/")
     }, 1000)
@@ -286,7 +279,7 @@ const BookFlight = () => {
         </div>
 
         <div className="grid grid-cols-1 xl:grid-cols-3 gap-6 sm:gap-8">
-          {/* Flight Details - Responsive sidebar */}
+          {/* Flight Details */}
           <div className="xl:col-span-1 order-2 xl:order-1">
             <div className="bg-white/80 backdrop-blur-sm rounded-3xl shadow-2xl p-6 sm:p-8 border border-gray-200 sticky top-24">
               <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-6 flex items-center">
@@ -373,7 +366,7 @@ const BookFlight = () => {
             </div>
           </div>
 
-          {/* Seat Selection - Main content area */}
+          {/* Seat Selection*/}
           <div className="xl:col-span-2 order-1 xl:order-2">
             <SeatSelector
               totalSeats={flight.total_seats}
@@ -479,3 +472,5 @@ const BookFlight = () => {
 }
 
 export default BookFlight
+
+{/* Made by Dishika Vaishkiyar - https://github.com/Dishika18 */}

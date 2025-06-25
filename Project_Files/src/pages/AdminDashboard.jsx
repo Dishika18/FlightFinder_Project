@@ -53,14 +53,12 @@ const AdminDashboard = () => {
   const [statusFilter, setStatusFilter] = useState("all")
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
-  // Modal states
   const [showFlightModal, setShowFlightModal] = useState(false)
   const [showConfirmModal, setShowConfirmModal] = useState(false)
   const [selectedFlight, setSelectedFlight] = useState(null)
   const [flightToDelete, setFlightToDelete] = useState(null)
   const [modalLoading, setModalLoading] = useState(false)
 
-  // Toast states
   const [toast, setToast] = useState({ show: false, message: "", type: "success" })
 
   const [expandedFlights, setExpandedFlights] = useState(new Set())
@@ -88,7 +86,6 @@ const AdminDashboard = () => {
     setUser(currentUser)
     setProfile(userProfile)
 
-    // Load dashboard data
     await loadDashboardData()
     setLoading(false)
   }
@@ -116,10 +113,8 @@ const AdminDashboard = () => {
   const handleSignOut = async () => {
     await signOut()
 
-    // Show logout toast
     showToast("You've been logged out", "info")
 
-    // Small delay to show toast before navigation
     setTimeout(() => {
       navigate("/")
     }, 1000)
@@ -145,12 +140,10 @@ const AdminDashboard = () => {
     setModalLoading(true)
     try {
       if (selectedFlight) {
-        // Update existing flight
         const { error } = await updateFlight(selectedFlight.id, flightData)
         if (error) throw error
         showToast("Flight updated successfully")
       } else {
-        // Create new flight
         const { error } = await createFlight(flightData)
         if (error) throw error
         showToast("Flight added successfully")
@@ -338,7 +331,7 @@ const AdminDashboard = () => {
           </div>
         </div>
 
-        {/* Stats Cards - Improved Mobile Responsiveness */}
+        {/* Stats Cards*/}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6 mb-8 sm:mb-12">
           <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-4 sm:p-6 border border-gray-200 hover:shadow-2xl transition-all duration-300">
             <div className="flex items-center justify-between">
@@ -409,7 +402,7 @@ const AdminDashboard = () => {
           </div>
         </div>
 
-        {/* Management Sections - Improved Mobile Layout */}
+        {/* Management Sections */}
         <div className="space-y-6 lg:space-y-0 lg:grid lg:grid-cols-2 lg:gap-8">
           {/* User Management */}
           <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-4 sm:p-6 border border-gray-200">
@@ -463,7 +456,7 @@ const AdminDashboard = () => {
             </div>
           </div>
 
-          {/* Flight Management - Enhanced Mobile Layout */}
+          {/* Flight Management */}
           <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-4 sm:p-6 border border-gray-200">
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 sm:mb-6 space-y-3 sm:space-y-0">
               <div className="flex items-center min-w-0 flex-1">
@@ -611,3 +604,6 @@ const AdminDashboard = () => {
 }
 
 export default AdminDashboard
+
+
+{/* Made by Dishika Vaishkiyar - https://github.com/Dishika18 */}

@@ -9,3 +9,5 @@ root.render(
     <App />
   </React.StrictMode>,
 )
+
+{/* Made by Dishika Vaishkiyar - https://github.com/Dishika18 */}

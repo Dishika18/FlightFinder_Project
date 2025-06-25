@@ -49,14 +49,12 @@ const Home = () => {
 
   const navigate = useNavigate()
 
-  // Use refs to store subscriptions and prevent multiple subscriptions
   const flightSubscriptionRef = useRef(null)
   const bookingSubscriptionRef = useRef(null)
 
   useEffect(() => {
     checkAuth()
     return () => {
-      // Cleanup subscriptions on unmount
       cleanupSubscriptions()
     }
   }, [])
@@ -94,7 +92,6 @@ const Home = () => {
       // Load initial data
       await Promise.all([loadAllFlights(), loadBookings(currentUser.id)])
 
-      // Set up real-time subscriptions
       setupRealTimeSubscriptions(currentUser.id)
     } catch (error) {
       showToast("Failed to load user data", "error")
@@ -104,11 +101,9 @@ const Home = () => {
   }
 
   const setupRealTimeSubscriptions = (userId) => {
-    // Clean up any existing subscriptions first
     cleanupSubscriptions()
 
     try {
-      // Subscribe to flight changes
       console.log("Setting up flight subscription")
       const flightSub = subscribeToFlights((payload) => {
         console.log("Flight update received:", payload)
@@ -116,7 +111,6 @@ const Home = () => {
       })
       flightSubscriptionRef.current = flightSub
 
-      // Subscribe to booking changes
       console.log("Setting up booking subscription")
       const bookingSub = subscribeToBookings((payload) => {
         console.log("Booking update received:", payload)
@@ -150,7 +144,6 @@ const Home = () => {
       }
     })
 
-    // Update bookings if flight status changed
     if (eventType === "UPDATE" && newRecord.status !== oldRecord?.status) {
       loadBookings(user?.id)
 
@@ -165,10 +158,8 @@ const Home = () => {
   const handleBookingUpdate = (payload, userId) => {
     const { eventType, new: newRecord, old: oldRecord } = payload
 
-    // Refresh flights to update seat availability
     loadAllFlights()
 
-    // Refresh user's bookings if it affects them
     if (newRecord?.user_id === userId || oldRecord?.user_id === userId) {
       loadBookings(userId)
     }
@@ -215,14 +206,11 @@ const Home = () => {
   }, [])
 
   const handleSignOut = async () => {
-    // Cleanup subscriptions before signing out
     cleanupSubscriptions()
     await signOut()
 
-    // Show logout toast
     showToast("You've been logged out", "info")
 
-    // Small delay to show toast before navigation
     setTimeout(() => {
       navigate("/")
     }, 1000)
@@ -235,7 +223,6 @@ const Home = () => {
       if (error) throw error
 
       showToast("Booking cancelled successfully", "success")
-      // Real-time subscription will handle the updates
     } catch (error) {
       showToast(error.message || "Failed to cancel booking", "error")
     } finally {
@@ -295,27 +282,7 @@ const Home = () => {
     }
   }
 
-  // Filter out cancelled bookings and bookings with null flights
   const activeBookings = bookings.filter((booking) => booking.status !== "cancelled" && booking.flights !== null)
-
-  // if (loading) {
-  //   return (
-  //     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 flex items-center justify-center p-4">
-  //       <div className="text-center">
-  //         <div className="relative mb-8">
-  //           <div className="w-20 h-20 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full flex items-center justify-center mx-auto shadow-2xl">
-  //             <Plane className="h-10 w-10 text-white animate-pulse" />
-  //           </div>
-  //           <div className="absolute inset-0 animate-spin">
-  //             <div className="w-20 h-20 border-4 border-blue-200 border-t-blue-600 rounded-full"></div>
-  //           </div>
-  //         </div>
-  //         <h2 className="text-2xl font-bold text-gray-900 mb-2">Welcome Aboard</h2>
-  //         <p className="text-gray-600 text-lg font-medium">Preparing your flight dashboard...</p>
-  //       </div>
-  //     </div>
-  //   )
-  // }
 
   if (loading) {
     return (
@@ -455,27 +422,6 @@ const Home = () => {
                   updates and instant confirmations.
                 </p>
               </div>
-
-              {/* <div className="flex flex-col space-y-4">
-                <div className="flex items-center space-x-4 text-blue-100">
-                  <div className="flex items-center">
-                    <Globe className="h-5 w-5 mr-2" />
-                    <span className="text-sm font-medium">500+ Destinations</span>
-                  </div>
-                  <div className="flex items-center">
-                    <Users className="h-5 w-5 mr-2" />
-                    <span className="text-sm font-medium">2M+ Travelers</span>
-                  </div>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <Star className="h-4 w-4 text-yellow-300" />
-                  <Star className="h-4 w-4 text-yellow-300" />
-                  <Star className="h-4 w-4 text-yellow-300" />
-                  <Star className="h-4 w-4 text-yellow-300" />
-                  <Star className="h-4 w-4 text-yellow-300" />
-                  <span className="text-sm text-blue-100 ml-2">4.9/5 Rating</span>
-                </div>
-              </div> */}
             </div>
           </div>
         </div>
@@ -535,9 +481,6 @@ const Home = () => {
                 <div className="w-24 h-24 bg-gradient-to-r from-gray-200 to-gray-300 rounded-full flex items-center justify-center mx-auto">
                   <Plane className="h-12 w-12 text-gray-400" />
                 </div>
-                {/* <div className="absolute -top-2 -right-2 w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
-                  <Search className="h-4 w-4 text-blue-600" />
-                </div> */}
               </div>
               <h3 className="text-2xl font-bold text-gray-900 mb-4">No flights found</h3>
               <p className="text-gray-600 text-lg max-w-md mx-auto mb-6">
@@ -719,3 +662,5 @@ const Home = () => {
 }
 
 export default Home
+
+{/* Made by Dishika Vaishkiyar - https://github.com/Dishika18 */}

@@ -33,7 +33,6 @@ const Landing = () => {
     const navigate = useNavigate()
     const [toast, setToast] = useState({ show: false, message: "", type: "success" })
 
-    // Refs for intersection observer
     const heroRef = useRef(null)
     const featuresRef = useRef(null)
     const statsRef = useRef(null)
@@ -289,8 +288,6 @@ const Landing = () => {
                             Discover the world with FlightFinder. Compare prices from 500+ airlines, find exclusive deals, and book
                             your perfect flight in seconds. Your next adventure is just one click away.
                         </p>
-
-                        {/* CTA Buttons */}
                         <div
                             className="flex flex-col sm:flex-row gap-4 justify-center mb-16 animate-fade-in-up"
                             style={{ animationDelay: "0.8s" }}
@@ -320,10 +317,6 @@ const Landing = () => {
                             className="flex flex-wrap justify-center items-center gap-8 text-gray-600 animate-fade-in-up"
                             style={{ animationDelay: "1s" }}
                         >
-                            {/* <div className="flex items-center">
-                                <Users className="h-5 w-5 mr-2 text-blue-600" />
-                                <span className="text-sm font-medium">2M+ Happy Travelers</span>
-                            </div> */}
                             <div className="flex items-center">
                                 <Star className="h-5 w-5 mr-2 text-yellow-500" />
                                 <span className="text-sm font-medium">4.9/5 Rating</span>
@@ -504,7 +497,6 @@ const Landing = () => {
                 </div>
             </section>
 
-            {/* CTA Section */}
             <section
                 id="cta"
                 ref={ctaRef}
@@ -572,6 +564,7 @@ const Landing = () => {
                         <p className="text-gray-500 text-sm">
                             © 2025 FlightFinder. All rights reserved. Built with ❤️ for travelers worldwide.
                         </p>
+                        {/* Made by Dishika Vaishkiyar - https://github.com/Dishika18 */}
                     </div>
                 </div>
             </footer>
@@ -662,3 +655,5 @@ const Landing = () => {
 }
 
 export default Landing
+
+{/* Made by Dishika Vaishkiyar - https://github.com/Dishika18 */}

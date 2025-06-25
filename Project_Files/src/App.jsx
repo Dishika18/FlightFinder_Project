@@ -13,7 +13,6 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/admin/dashboard" element={<AdminDashboard />} />
           <Route path="/book/:flightId" element={<BookFlight />} />
-          {/* Catch all route - redirect to landing */}
           <Route path="*" element={<Landing />} />
         </Routes>
       </div>
@@ -22,3 +21,5 @@ function App() {
 }
 
 export default App
+
+{/* Made by Dishika Vaishkiyar - https://github.com/Dishika18 */}
