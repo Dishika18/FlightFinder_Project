@@ -34,3 +34,7 @@ To run this project locally:
 3. Install dependencies using `npm install`  
 4. Connect to Supabase and set environment variables  
 5. Run the app using `npm run dev`  
+
+---
+
+Made with ❤️ by [Dishika Vaishkiyar](https://github.com/Dishika18)
