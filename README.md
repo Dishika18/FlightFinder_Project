@@ -1,6 +1,6 @@
 # FlightFinder – Find It. Book It. Board It. ✈
 
-![FlightFinder Preview](Project_Files/images/og_img.png)
+![FlightFinder Preview](Project_Files\Frontend\public\images\og_img.png)
 
 <br>
 
@@ -32,5 +32,9 @@ To run this project locally:
    git clone https://github.com/your-username/flightfinder.git
    cd flightfinder 
 3. Install dependencies using `npm install`  
-4. Connect to Supabase and set environment variables  
+4. Set environment variables  
 5. Run the app using `npm run dev`  
+
+---
+
+Made with ❤️ by [Dishika Vaishkiyar](https://github.com/Dishika18)
