@@ -37,4 +37,10 @@ To run this project locally:
 
 ---
 
+🔗 Drive : https://drive.google.com/drive/folders/1yFjRWsHONg-FPmsYw3H9Za7CZRdjT2CR?usp=sharing
+
+🌐 Live Demo : https://drive.google.com/file/d/1JszI6TTMx6hA7s-L_9XncmgoS_Ym4h1z/view?usp=sharing
+
+---
+
 Made with ❤️ by [Dishika Vaishkiyar](https://github.com/Dishika18)
